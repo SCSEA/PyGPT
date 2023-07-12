@@ -11,7 +11,7 @@ from colorama import init
 init()
 
 # Set up the OpenAI API credentials
-openai.api_key = "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"
+openai.api_key = "sk68676ughykj....duS7USoKsdAa1IDEl"
 
 # Set up the figlet font style
 custom_fig = Figlet(font='graffiti')
@@ -19,27 +19,17 @@ custom_fig = Figlet(font='graffiti')
 # Define the main menu function
 def main_menu():
     os.system('cls' if os.name == 'nt' else 'clear')
-    
-    
-   # from termcolor import colored, cprint
-#from pyfiglet import Figlet
-#import time
 
-custom_fig = Figlet(font='graffiti')
-text = custom_fig.renderText('ChatGpt')
+    colors = ['cyan', 'blue', 'yellow', 'green', 'cyan']
 
-colors = ['cyan', 'blue', 'yellow', 'green', 'cyan']
+    for color in colors:
+        print(colored(custom_fig.renderText('ChatGpt'), color=color))
 
-for color in colors:
-    print(colored(custom_fig.renderText('ChatGpt'), color=color))
-    
-    
     print(colored("="*60, "green"))
-    print(colored("\nAuthor: TheNooB\nGithub: https://github.com/TheNooB4\nContact: +233500776941\nVersion: 0.1\n","magenta"))
+    print(colored("\nAuthor: SCSEA\nGithub: https://github.com/SCSEA\nContact: Telegram : @Programmerboy1\nVersion: 0.1\n","magenta"))
     print(colored("="*60, "green"))
     time.sleep(1)
-    
-    
+
     print(colored("\n  1. Text to Image", "yellow"))
     print(colored("  2. Chat with AI", "yellow"))
     print(colored("  3. Exit", "red"))
@@ -74,7 +64,7 @@ def text_to_image():
     num_images = int(input("\n How many images do you want to generate? "))
 
     if num_images > 0:
-        print("\n This may take a while depending on your network and internet so please wait...\n")
+        print("\n This may take a while depending on your network and internet, so please wait...\n")
 
     for i in range(num_images):
         # Generate a random filename for each image
@@ -89,17 +79,16 @@ def text_to_image():
             response_format="url"
         )
 
-        # Get the image url from the response
-        image_url = response['data'][0]['url']
+        # Get the image URL from the response
+        image_url = response['output']['url']
 
         # Download image and save to local storage
         response = requests.get(image_url)
-        with open(f"/sdcard/{filename}", 'wb') as f:
+        with open(f"{filename}", 'wb') as f:
             f.write(response.content)
 
         # Inform user of successful save location
-        print(f"Image {i+1} saved as {filename} in /sdcard/Gpt directory.")
-
+        print(f"Image {i+1} saved as {filename} in the current directory.")
 
 # Define the chat with AI function
 def chat_with_ai():
@@ -142,7 +131,6 @@ def chat_with_ai():
                 typing_speed = 0.05 # Change this value to modify the typing speed
                 time.sleep(typing_speed)
                 print(char, end="", flush=True)
-
 
             # Add the AI's response to the conversation history
             conversation_history += f"AI: {ai_response}\n"
