@@ -51,7 +51,7 @@
 <pre><code>pip install -r requirements.txt</code></pre>
 
 <p>Now you are ready to run the Python script:</p>
-<pre><code>python Gpt.py</code></pre>
+<pre><code>python open-ai-chatgpt-v2.py</code></pre>
     
     
  <img src="" alt="PyGPT Screenshot">
